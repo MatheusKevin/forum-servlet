@@ -1,18 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.pucpr.prog4.forum.DAO;
 
 import br.pucpr.prog4.forum.model.Assunto;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author Matheus
- */
 public class JbdcAssuntoDAO implements AssuntoDAO{
     private Connection conexao;
 
@@ -22,7 +19,33 @@ public class JbdcAssuntoDAO implements AssuntoDAO{
 
     @Override
     public List<Assunto> obterTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql;
+        sql = "SELECT * FROM assuntos";
+        PreparedStatement ps;
+        ResultSet rs;
+        List<Assunto> assuntos = new ArrayList<Assunto>();
+        try{
+            ps = conexao.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                assuntos.add(popularObjeto(rs));
+            }
+        }catch(Exception e){
+            
+        }
+        return assuntos;
+    }
+
+    @Override
+    public Assunto popularObjeto(ResultSet rs) {
+        Assunto assunto = new Assunto();
+        try {
+            assunto.setId(rs.getInt("id"));
+            assunto.setNome(rs.getString("assunto"));
+        } catch (SQLException ex) {
+            
+        }
+        return assunto;
     }
     
 }
