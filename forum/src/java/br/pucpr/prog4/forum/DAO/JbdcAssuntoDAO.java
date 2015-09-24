@@ -30,7 +30,7 @@ public class JbdcAssuntoDAO implements AssuntoDAO{
             while(rs.next()){
                 assuntos.add(popularObjeto(rs));
             }
-        }catch(Exception e){
+        }catch(SQLException e){
             
         }
         return assuntos;
