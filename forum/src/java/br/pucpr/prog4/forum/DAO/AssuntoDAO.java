@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface AssuntoDAO{
     
-    public List<Assunto> obterTodos();
+    List<Assunto> obterTodos();
 }
