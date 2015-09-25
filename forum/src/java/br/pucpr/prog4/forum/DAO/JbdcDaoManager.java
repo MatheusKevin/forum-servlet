@@ -8,7 +8,9 @@ import java.util.logging.Logger;
 
 public class JbdcDaoManager implements IDaoManager{
     private Connection conexao;
-    private JbdcAssuntoDAO assuntoDao;
+    private AssuntoDAO assuntoDao;
+    private TopicoDAO topicoDao;
+    private RespostaDAO respostaDao;
 
     public JbdcDaoManager() {
     }
@@ -22,6 +24,9 @@ public class JbdcDaoManager implements IDaoManager{
             conexao = DriverManager.getConnection(url, "root", "root");
             conexao.setAutoCommit(false);
             assuntoDao = new JbdcAssuntoDAO(conexao);
+            topicoDao = new JbdcTopicoDAO(conexao);
+            respostaDao = new JbdcRespostaDAO(conexao);
+            
         }catch(Exception e){
             System.out.println(e.getMessage());
             throw new DaoException("Ocorreu um erro ao conectar ao banco de dados"+
@@ -58,6 +63,16 @@ public class JbdcDaoManager implements IDaoManager{
     @Override
     public AssuntoDAO getAssuntoDAO() {
         return assuntoDao;
+    }
+
+    @Override
+    public TopicoDAO getTopicoDAO() {
+        return topicoDao;
+    }
+
+    @Override
+    public RespostaDAO getRespostaDAO() {
+        return respostaDao;
     }
     
 }

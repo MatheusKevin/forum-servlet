@@ -7,4 +7,6 @@ public interface IDaoManager {
     void confirmarTransacao();
     void abortarTransacao();
     AssuntoDAO getAssuntoDAO();
+    TopicoDAO getTopicoDAO();
+    RespostaDAO getRespostaDAO();
 }
