@@ -16,15 +16,17 @@ public class JbdcDaoManager implements IDaoManager{
     @Override
     public void iniciar() throws DaoException{
         try{
-            Class.forName("com.mysql.jbdc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             String url;
-            url = "jbdc:mysql://localhost:8080/forum";
+            url = "jdbc:mysql://localhost:3306/forum";
             conexao = DriverManager.getConnection(url, "root", "root");
             conexao.setAutoCommit(false);
             assuntoDao = new JbdcAssuntoDAO(conexao);
         }catch(Exception e){
+            System.out.println(e.getMessage());
             throw new DaoException("Ocorreu um erro ao conectar ao banco de dados"+
-                    e.getMessage());
+                e.getMessage());
+            
         }
     }
 
