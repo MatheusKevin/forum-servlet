@@ -25,7 +25,7 @@ public class JbdcRespostaDAO implements RespostaDAO{
     @Override
     public List<Resposta> obterPorTopico(int id) {
         String sql;
-        sql = "SELECT * FROM respostas"
+        sql = "SELECT * FROM respostas "
                 + "WHERE idTopico=?";
         PreparedStatement ps;
         ResultSet rs;

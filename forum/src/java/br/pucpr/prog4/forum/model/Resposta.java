@@ -7,7 +7,7 @@ public class Resposta {
     private Integer idTopico;
     private String nome;
     private Date data;
-    private String Mensagem;
+    private String mensagem;
 
     public Resposta() {
     }
@@ -45,11 +45,11 @@ public class Resposta {
     }
 
     public String getMensagem() {
-        return Mensagem;
+        return mensagem;
     }
 
     public void setMensagem(String Mensagem) {
-        this.Mensagem = Mensagem;
+        this.mensagem = Mensagem;
     }
     
 }

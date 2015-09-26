@@ -16,9 +16,9 @@
         <h1>Tópicos</h1>
         <div>
             <c:forEach var="topico" items="${topicos}">
-                Tópico: ${topicos.titulo}<br />
-                Autor: ${topicos.autor}
-                <a href="respostas?topico=${topicos.id}">Acessar</a>
+                Tópico: ${topico.titulo}<br />
+                Autor: ${topico.autor}
+                <a href="respostas?topico=${topico.id}">Acessar</a>
             </c:forEach>
         </div>
     </body>

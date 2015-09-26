@@ -8,6 +8,10 @@
         <servlet-name>TopicosServlet</servlet-name>
         <servlet-class>br.pucpr.prog4.forum.controllers.TopicosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RespostasServlet</servlet-name>
+        <servlet-class>br.pucpr.prog4.forum.controllers.RespostasServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AssuntoServlet</servlet-name>
         <url-pattern>/assunto</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>TopicosServlet</servlet-name>
         <url-pattern>/topicos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RespostasServlet</servlet-name>
+        <url-pattern>/respostas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
