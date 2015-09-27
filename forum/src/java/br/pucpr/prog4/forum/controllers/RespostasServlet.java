@@ -1,5 +1,8 @@
 package br.pucpr.prog4.forum.controllers;
 
+import br.pucpr.prog4.forum.model.Resposta;
+import br.pucpr.prog4.forum.model.RespostaManager;
+import br.pucpr.prog4.forum.model.RespostaManagerImpl;
 import br.pucpr.prog4.forum.model.Topico;
 import br.pucpr.prog4.forum.model.TopicoManager;
 import br.pucpr.prog4.forum.model.TopicoManagerImpl;
@@ -35,7 +38,19 @@ public class RespostasServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        Resposta resposta = new Resposta();
+        String topicoParam = request.getParameter("idTopico");
+        resposta.setIdTopico(Integer.parseInt(topicoParam));
+        resposta.setNome(request.getParameter("nome"));
+        resposta.setMensagem(request.getParameter("msg"));
+        
+        RespostaManager manager = new RespostaManagerImpl();
+        manager.inserirEmTopico(resposta);
+        
+        RequestDispatcher rd;
+        rd = request.getRequestDispatcher("/WEB-INF/JSP/TopicoRespostas.jsp");
+        rd.forward(request, response);
     }
 
 }

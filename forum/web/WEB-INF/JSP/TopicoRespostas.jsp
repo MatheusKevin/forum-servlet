@@ -21,7 +21,8 @@
                 </div>
             </c:forEach>
             <div>
-                <form>
+                <form action="respostas" method="POST">
+                    <input type="hidden" name="idTopico" value="${topico.id}"
                     <label for="nome">Nome:</label>
                     <input type="text" name="nome" id="nome"><br />
                     <label for="msg">Mensagem:</label>
