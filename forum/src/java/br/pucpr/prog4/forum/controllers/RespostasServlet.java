@@ -7,6 +7,7 @@ import br.pucpr.prog4.forum.model.Topico;
 import br.pucpr.prog4.forum.model.TopicoManager;
 import br.pucpr.prog4.forum.model.TopicoManagerImpl;
 import java.io.IOException;
+import java.sql.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,10 +40,12 @@ public class RespostasServlet extends HttpServlet {
             throws ServletException, IOException {
         
         Resposta resposta = new Resposta();
+        Date data = new Date(System.currentTimeMillis());
         String topicoParam = request.getParameter("idTopico");
         resposta.setIdTopico(Integer.parseInt(topicoParam));
         resposta.setNome(request.getParameter("nome"));
         resposta.setMensagem(request.getParameter("msg"));
+        resposta.setData(data);
         
         RespostaManager manager = new RespostaManagerImpl();
         manager.inserirEmTopico(resposta);

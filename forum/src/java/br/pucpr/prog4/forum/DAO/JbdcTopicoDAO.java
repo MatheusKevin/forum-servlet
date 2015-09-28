@@ -21,25 +21,23 @@ public class JbdcTopicoDAO implements TopicoDAO{
     public void inserir(Topico topico) {
         String sql;
         sql = "INSERT INTO topicos ("
-                + "idAssunto,"
-                + "autor,"
-                + "titulo,"
-                + "dataCriacao,"
-                + "nota,"
+                + "idAssunto, "
+                + "autor, "
+                + "titulo, "
+                + "dataCriacao, "
                 + "visualizacoes ) "
-                + "VALUES (?,?,?,?,?,?)";
+                + "VALUES (?,?,?,?,?)";
         PreparedStatement ps;
         try{
             ps = conexao.prepareStatement(sql);
             ps.setInt(1, topico.getIdAssunto());
             ps.setString(2, topico.getAutor());
             ps.setString(3, topico.getTitulo());
-            ps.setDate(4, topico.getDataCriacao());
-            ps.setInt(5, topico.getNota());
-            ps.setInt(6, topico.getVisualizacoes());
+            ps.setDate(4, new java.sql.Date(topico.getDataCriacao().getTime()));
+            ps.setInt(5, topico.getVisualizacoes());
             ps.executeUpdate();
         }catch(SQLException ex){
-            
+            throw new DaoException(sql + " " + ex.getMessage());
         }
     
     }
@@ -96,7 +94,6 @@ public class JbdcTopicoDAO implements TopicoDAO{
             topico.setAutor(rs.getString("autor"));
             topico.setTitulo(rs.getString("titulo"));
             topico.setDataCriacao(rs.getDate("dataCriacao"));
-            topico.setNota(rs.getInt("nota"));
             topico.setVisualizacoes(rs.getInt("visualizacoes"));
             topico.setRespostas(manager.getRespostaDAO().obterPorTopico(rs.getInt("id")));
             manager.encerrar();

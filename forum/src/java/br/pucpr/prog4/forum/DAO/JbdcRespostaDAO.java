@@ -31,7 +31,7 @@ public class JbdcRespostaDAO implements RespostaDAO{
             ps = conexao.prepareStatement(sql);
             ps.setInt(1, resposta.getIdTopico());
             ps.setString(2, resposta.getNome());
-            ps.setDate(3, resposta.getData());
+            ps.setDate(3, new java.sql.Date(resposta.getData().getTime()));
             ps.setString(4, resposta.getMensagem());
             ps.executeUpdate();
         } catch (SQLException ex) {

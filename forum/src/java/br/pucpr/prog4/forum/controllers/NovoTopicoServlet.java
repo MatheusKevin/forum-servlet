@@ -8,6 +8,7 @@ import br.pucpr.prog4.forum.model.TopicoManager;
 import br.pucpr.prog4.forum.model.TopicoManagerImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,11 +37,14 @@ public class NovoTopicoServlet extends HttpServlet {
             throws ServletException, IOException {
         
         Topico topico = new Topico();
+        Date data = new Date(System.currentTimeMillis());
+        
         
         String idAssunto = request.getParameter("assunto");
         topico.setAutor(request.getParameter("autor"));
         topico.setTitulo(request.getParameter("titulo"));
         topico.setIdAssunto(Integer.parseInt(idAssunto));
+        topico.setDataCriacao(data);
         topico.setVisualizacoes(0);
         
         TopicoManager manager = new TopicoManagerImpl();

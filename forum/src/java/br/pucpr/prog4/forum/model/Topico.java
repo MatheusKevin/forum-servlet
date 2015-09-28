@@ -9,7 +9,6 @@ public class Topico {
     private String autor;
     private String titulo;
     private Date dataCriacao;
-    private Integer nota;
     private Integer visualizacoes;
     private List<Resposta> respostas;
 
@@ -54,14 +53,6 @@ public class Topico {
 
     public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
-    }
-
-    public Integer getNota() {
-        return nota;
-    }
-
-    public void setNota(Integer nota) {
-        this.nota = nota;
     }
 
     public Integer getVisualizacoes() {
