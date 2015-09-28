@@ -9,10 +9,8 @@ public class Topico {
     private String autor;
     private String titulo;
     private Date dataCriacao;
-    private Double nota;
+    private Integer nota;
     private Integer visualizacoes;
-    private String nomeUltAcesso;
-    private Date dataUltAcesso;
     private List<Resposta> respostas;
 
     public Topico() {
@@ -58,11 +56,11 @@ public class Topico {
         this.dataCriacao = dataCriacao;
     }
 
-    public Double getNota() {
+    public Integer getNota() {
         return nota;
     }
 
-    public void setNota(Double nota) {
+    public void setNota(Integer nota) {
         this.nota = nota;
     }
 
@@ -74,21 +72,6 @@ public class Topico {
         this.visualizacoes = visualizacoes;
     }
 
-    public String getNomeUltAcesso() {
-        return nomeUltAcesso;
-    }
-
-    public void setNomeUltAcesso(String nomeUltAcesso) {
-        this.nomeUltAcesso = nomeUltAcesso;
-    }
-
-    public Date getDataUltAcesso() {
-        return dataUltAcesso;
-    }
-
-    public void setDataUltAcesso(Date dataUltAcesso) {
-        this.dataUltAcesso = dataUltAcesso;
-    }
 
     public List<Resposta> getRespostas() {
         return respostas;

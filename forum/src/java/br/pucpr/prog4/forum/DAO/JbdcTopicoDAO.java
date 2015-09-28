@@ -26,10 +26,8 @@ public class JbdcTopicoDAO implements TopicoDAO{
                 + "titulo,"
                 + "dataCriacao,"
                 + "nota,"
-                + "visualizacoes,"
-                + "nomeUltimoAcesso,"
-                + "dataUltimoAcesso)"
-                + "VALUES (?,?,?,?,?,?,?,?)";
+                + "visualizacoes ) "
+                + "VALUES (?,?,?,?,?,?)";
         PreparedStatement ps;
         try{
             ps = conexao.prepareStatement(sql);
@@ -37,10 +35,8 @@ public class JbdcTopicoDAO implements TopicoDAO{
             ps.setString(2, topico.getAutor());
             ps.setString(3, topico.getTitulo());
             ps.setDate(4, topico.getDataCriacao());
-            ps.setDouble(5, topico.getNota());
+            ps.setInt(5, topico.getNota());
             ps.setInt(6, topico.getVisualizacoes());
-            ps.setString(7, topico.getNomeUltAcesso());
-            ps.setDate(8, topico.getDataUltAcesso());
             ps.executeUpdate();
         }catch(SQLException ex){
             
@@ -100,10 +96,8 @@ public class JbdcTopicoDAO implements TopicoDAO{
             topico.setAutor(rs.getString("autor"));
             topico.setTitulo(rs.getString("titulo"));
             topico.setDataCriacao(rs.getDate("dataCriacao"));
-            topico.setNota(rs.getDouble("nota"));
+            topico.setNota(rs.getInt("nota"));
             topico.setVisualizacoes(rs.getInt("visualizacoes"));
-            topico.setNomeUltAcesso(rs.getString("nomeUltimoAcesso"));
-            topico.setDataUltAcesso(rs.getDate("dataUltimoAcesso"));
             topico.setRespostas(manager.getRespostaDAO().obterPorTopico(rs.getInt("id")));
             manager.encerrar();
         } catch (SQLException ex) {

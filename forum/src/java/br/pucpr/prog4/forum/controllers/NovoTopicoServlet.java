@@ -41,6 +41,7 @@ public class NovoTopicoServlet extends HttpServlet {
         topico.setAutor(request.getParameter("autor"));
         topico.setTitulo(request.getParameter("titulo"));
         topico.setIdAssunto(Integer.parseInt(idAssunto));
+        topico.setVisualizacoes(0);
         
         TopicoManager manager = new TopicoManagerImpl();
         manager.cadastrar(topico);
