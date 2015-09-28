@@ -3,7 +3,6 @@ package br.pucpr.prog4.forum.model;
 import br.pucpr.prog4.forum.DAO.DaoException;
 import br.pucpr.prog4.forum.DAO.IDaoManager;
 import br.pucpr.prog4.forum.DAO.JbdcDaoManager;
-import br.pucpr.prog4.forum.DAO.JbdcTopicoDAO;
 import br.pucpr.prog4.forum.DAO.TopicoDAO;
 import java.util.ArrayList;
 import java.util.List;

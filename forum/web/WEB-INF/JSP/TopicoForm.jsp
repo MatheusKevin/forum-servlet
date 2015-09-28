@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Novo Tópico</h1>
-        <form>
+        <form action="novo-topico" method="POST">
             <label for="autor">Seu Nome:</label><input type="text" name="autor" id="autor">
             <label for="titulo">Título:</label>
             <textarea rows="3" cols="30" name="titulo" id="titulo"></textarea>

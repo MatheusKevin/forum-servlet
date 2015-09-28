@@ -3,6 +3,9 @@ package br.pucpr.prog4.forum.controllers;
 import br.pucpr.prog4.forum.model.Assunto;
 import br.pucpr.prog4.forum.model.AssuntoManager;
 import br.pucpr.prog4.forum.model.AssuntoManagerImpl;
+import br.pucpr.prog4.forum.model.Topico;
+import br.pucpr.prog4.forum.model.TopicoManager;
+import br.pucpr.prog4.forum.model.TopicoManagerImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -31,7 +34,18 @@ public class NovoTopicoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        Topico topico = new Topico();
+        
+        String idAssunto = request.getParameter("assunto");
+        topico.setAutor(request.getParameter("autor"));
+        topico.setTitulo(request.getParameter("titulo"));
+        topico.setIdAssunto(Integer.parseInt(idAssunto));
+        
+        TopicoManager manager = new TopicoManagerImpl();
+        manager.cadastrar(topico);
+        
+        response.sendRedirect("topicos?id="+idAssunto);
     }
 
 }
