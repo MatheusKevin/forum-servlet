@@ -3,6 +3,7 @@ package br.pucpr.prog4.forum.model;
 import br.pucpr.prog4.forum.DAO.DaoException;
 import br.pucpr.prog4.forum.DAO.IDaoManager;
 import br.pucpr.prog4.forum.DAO.JbdcDaoManager;
+import br.pucpr.prog4.forum.DAO.JbdcTopicoDAO;
 import br.pucpr.prog4.forum.DAO.TopicoDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,16 @@ public class TopicoManagerImpl implements TopicoManager{
 
     @Override
     public void cadastrar(Topico topico) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        IDaoManager manager = new JbdcDaoManager();
+        try{
+            manager.iniciar();
+            TopicoDAO dao = manager.getTopicoDAO();
+            dao.inserir(topico);
+            manager.confirmarTransacao();
+            manager.encerrar();
+        }catch(Exception ex){
+            manager.encerrar();
+        }
     }
 
     @Override

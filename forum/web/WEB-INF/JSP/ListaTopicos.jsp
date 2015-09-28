@@ -15,6 +15,9 @@
     <body>
         <h1>Tópicos</h1>
         <div>
+            <a href="novo-topico">Novo tópico</a>
+        </div>
+        <div>
             <c:forEach var="topico" items="${topicos}">
                 Tópico: ${topico.titulo}<br />
                 Autor: ${topico.autor}

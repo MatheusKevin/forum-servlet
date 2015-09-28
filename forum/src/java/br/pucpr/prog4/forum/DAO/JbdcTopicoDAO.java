@@ -19,7 +19,33 @@ public class JbdcTopicoDAO implements TopicoDAO{
 
     @Override
     public void inserir(Topico topico) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql;
+        sql = "INSERT INTO topicos ("
+                + "idAssunto,"
+                + "autor,"
+                + "titulo,"
+                + "dataCriacao,"
+                + "nota,"
+                + "visualizacoes,"
+                + "nomeUltimoAcesso,"
+                + "dataUltimoAcesso)"
+                + "VALUES (?,?,?,?,?,?,?,?)";
+        PreparedStatement ps;
+        try{
+            ps = conexao.prepareStatement(sql);
+            ps.setInt(1, topico.getIdAssunto());
+            ps.setString(2, topico.getAutor());
+            ps.setString(3, topico.getTitulo());
+            ps.setDate(4, topico.getDataCriacao());
+            ps.setDouble(5, topico.getNota());
+            ps.setInt(6, topico.getVisualizacoes());
+            ps.setString(7, topico.getNomeUltAcesso());
+            ps.setDate(8, topico.getDataUltAcesso());
+            ps.executeUpdate();
+        }catch(SQLException ex){
+            
+        }
+    
     }
 
     @Override

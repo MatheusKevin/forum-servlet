@@ -7,7 +7,6 @@ import br.pucpr.prog4.forum.model.Topico;
 import br.pucpr.prog4.forum.model.TopicoManager;
 import br.pucpr.prog4.forum.model.TopicoManagerImpl;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -48,9 +47,7 @@ public class RespostasServlet extends HttpServlet {
         RespostaManager manager = new RespostaManagerImpl();
         manager.inserirEmTopico(resposta);
         
-        RequestDispatcher rd;
-        rd = request.getRequestDispatcher("/WEB-INF/JSP/TopicoRespostas.jsp");
-        rd.forward(request, response);
+        response.sendRedirect("respostas?topico="+topicoParam);
     }
 
 }

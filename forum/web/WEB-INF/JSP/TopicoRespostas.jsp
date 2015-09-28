@@ -26,9 +26,7 @@
                     <label for="nome">Nome:</label>
                     <input type="text" name="nome" id="nome"><br />
                     <label for="msg">Mensagem:</label>
-                    <textarea rows="5" cols="50" name="msg" id="msg">
-                        Deixe um comentário...
-                    </textarea><br />
+                    <textarea rows="5" cols="50" name="msg" id="msg"></textarea><br />
                     <input type="submit" value="Publicar">
                 </form>
             </div>
